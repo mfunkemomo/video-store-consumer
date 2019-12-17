@@ -4,9 +4,21 @@ import MovieSearch from './components/MovieSearch.js';
 import MovieLibrary from './components/MovieLibrary.js';
 import CustomerList from './components/CustomerList.js';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import './App.css';
+import axios from 'axios'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      searchValue: '',
+      selectedCustomer: '',
+      selectedMovie: '',
+      error: '',
+    }
+  }
+
+
   render() {
     const Home = () => {
       return (
