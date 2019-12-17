@@ -30,7 +30,6 @@ class MovieLibrary extends Component {
 
   displayMovies = () => {
     const filmCollection = this.state.movies.map((movie, i) => {
-      console.log(movie.title)
       return (
         <Movie 
           key = {i}
