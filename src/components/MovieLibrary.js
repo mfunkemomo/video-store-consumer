@@ -34,7 +34,7 @@ class MovieLibrary extends Component {
       return (
         <Movie 
           key = {i}
-          movie = {movie.title}
+          title = {movie.title}
         />
       )
     })
