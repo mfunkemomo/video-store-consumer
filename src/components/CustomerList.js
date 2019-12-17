@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class MovieSearch extends Component {
+class CustomerList extends Component {
   render() {
     return (
       <div className="App">
-        <h1>MovieSearch</h1>
+        <h1>CustomerList</h1>
       </div>
     );
   }
 }
 
-export default MovieSearch;
+export default CustomerList;
