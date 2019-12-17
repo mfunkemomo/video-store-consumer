@@ -12,12 +12,11 @@ class App extends Component {
       <Router>
         <div className="App">
           <Nav/>
-          <Route path='/moviesearch' component={MovieSearch}/>
-          <Route path='/movielibrary' component={MovieLibrary}/>
-          <Route path='/customerlist' component={CustomerList}/>
-          {/* <MovieSearch/> */}
-          {/* <MovieLibrary/>
-          <CustomerList/> */}
+          <Switch>
+            <Route path='/moviesearch' component={MovieSearch}/>
+            <Route path='/movielibrary' component={MovieLibrary}/>
+            <Route path='/customerlist' component={CustomerList}/>
+          </Switch>
         </div>
       </Router>
     );
