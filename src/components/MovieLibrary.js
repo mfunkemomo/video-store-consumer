@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Movie from './Movie.js'
+import {Route, Link} from 'react-router-dom'
 import axios from 'axios'
 
 class MovieLibrary extends Component {
@@ -12,28 +14,28 @@ class MovieLibrary extends Component {
   }
 
   componentDidMount(){
-    axios.get(`http://localhost:3000/`)
+    axios.get(`http://localhost:3000/movies`)
     .then((response) => {
+      const movies = response.data.map((entry) => {
+        return (entry)
+      })
       this.setState({
-        movies: response.data
+        movies: movies
       })
     })
     .catch((error) => {
-      this.setState({
-        this.setState({ error: error.message });
-      })
+      this.setState({ error: error.message });
     })
   }
 
   displayMovies = () => {
     const filmCollection = this.state.movies.map((movie, i) => {
+      console.log(movie.title)
       return (
-        <ul>
-          <li key={i}>
-            {movie}
-          </li>
-          console.log(movie)
-        </ul>
+        <Movie 
+          key = {i}
+          movie = {movie.title}
+        />
       )
     })
     return filmCollection
