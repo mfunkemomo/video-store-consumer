@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import MovieSearch from './components/MovieSearch.js';
+import MovieLibrary from './components/MovieLibrary.js';
+import CustomerList from './components/CustomerList.js';
 import logo from './logo.svg';
 import './App.css';
 
