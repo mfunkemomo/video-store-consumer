@@ -8,14 +8,23 @@ import './App.css';
 
 class App extends Component {
   render() {
+    const Home = () => {
+      return (
+      <div>
+        <h1>Homepage</h1>
+      </div>
+      )
+    }
+
     return (
       <Router>
         <div className="App">
           <Nav/>
           <Switch>
-            <Route path='/moviesearch' component={MovieSearch}/>
-            <Route path='/movielibrary' component={MovieLibrary}/>
-            <Route path='/customerlist' component={CustomerList}/>
+            <Route exact path='/' component={Home}/>
+            <Route path='/search' component={MovieSearch}/>
+            <Route path='/library' component={MovieLibrary}/>
+            <Route path='/customer' component={CustomerList}/>
           </Switch>
         </div>
       </Router>
