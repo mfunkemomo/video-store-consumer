@@ -10,13 +10,16 @@ class App extends Component {
     super(props)
 
     this.state = {
-      searchValue: '',
       selectedCustomer: '',
-      selectedMovie: '',
+      selectedMovie: {},
       error: '',
     }
   }
 
+  selectMovie = (movie) => {
+    this.setState({selectedMovie: movie})
+    console.log(this.state.selectedMovie)
+  }
 
   render() {
     const Home = () => {
@@ -34,7 +37,12 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route path='/search' component={MovieSearch}/>
-            <Route path='/library' component={MovieLibrary}/>
+            <Route path='/library'
+              render={(props) => 
+              <MovieLibrary {...props}
+                selectMovieCallback={this.selectMovie}
+              />}
+            />
             <Route path='/customer' component={CustomerList}/>
           </Switch>
         </div>
