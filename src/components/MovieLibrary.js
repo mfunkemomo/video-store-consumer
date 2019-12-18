@@ -31,10 +31,17 @@ class MovieLibrary extends Component {
   displayMovies = () => {
     const filmCollection = this.state.movies.map((movie, i) => {
       return (
-        <Movie 
-          key = {i}
-          title = {movie.title}
-        />
+        <div key = {i}>
+            <Movie 
+              title = {movie.title}
+              selectMovieCallback={this.props.selectMovie}
+            />
+            <button
+              type="button"
+              aria-label="Select movie"
+              onClick={() => {this.props.selectMovieCallback(movie)}}
+            >Select movie</button>
+          </div>
       )
     })
     return filmCollection

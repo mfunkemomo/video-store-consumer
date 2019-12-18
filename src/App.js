@@ -10,13 +10,15 @@ class App extends Component {
     super(props)
 
     this.state = {
-      searchValue: '',
       selectedCustomer: '',
-      selectedMovie: '',
+      selectedMovie: {},
       error: '',
     }
   }
 
+  selectMovie = (movie) => {
+    this.setState({selectedMovie: movie})
+  }
 
   render() {
     const Home = () => {

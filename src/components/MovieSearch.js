@@ -45,9 +45,7 @@ class MovieSearch extends Component {
 
     this.findMovie(newSearch.searchValue);
 
-    this.setState({
-      searchValue: '',
-    });
+    this.setState({searchValue: ''});
   }
 
   addMovie = (newMovie) => {
