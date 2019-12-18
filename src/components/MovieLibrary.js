@@ -34,11 +34,10 @@ class MovieLibrary extends Component {
         <div key = {i}>
             <Movie 
               title = {movie.title}
-              selectMovieCallback={this.props.selectMovie}
             />
             <button
               type="button"
-              aria-label="Select movie"
+              label="Select movie"
               onClick={() => {this.props.selectMovieCallback(movie)}}
             >Select movie</button>
           </div>

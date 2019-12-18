@@ -39,9 +39,7 @@ class MovieSearch extends Component {
   onSubmitSearch = (event) => {
     event.preventDefault();
     
-    const newSearch = {
-      searchValue: this.state.searchValue,
-    }
+    const newSearch = {searchValue: this.state.searchValue}
 
     this.findMovie(newSearch.searchValue);
 
