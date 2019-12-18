@@ -19,6 +19,7 @@ class MovieSearch extends Component {
     axios.get(`http://localhost:3000/movies`, {params: {query: title}})
     .then((response) => {
       console.log('it worked!')
+      console.log(response)
     })
     .catch((error) => {
       this.setState({ error: error.message });
@@ -41,8 +42,9 @@ class MovieSearch extends Component {
     const newSearch = {
       searchValue: this.state.searchValue,
     }
-    // console.log()
-    this.props.findMovie(newSearch);
+    console.log('now???')
+    console.log(newSearch)
+    this.findMovie(newSearch.searchValue);
 
     this.setState({
       searchValue: '',
