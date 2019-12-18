@@ -4,7 +4,6 @@ import MovieSearch from './components/MovieSearch.js';
 import MovieLibrary from './components/MovieLibrary.js';
 import CustomerList from './components/CustomerList.js';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import axios from 'axios'
 
 class App extends Component {
   constructor(props){

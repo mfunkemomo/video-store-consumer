@@ -3,7 +3,6 @@ import Customer from './Customer'
 import {Route, Link} from 'react-router-dom'
 import axios from 'axios';
 
-
 class CustomerList extends Component {
   constructor(props){
     super(props)

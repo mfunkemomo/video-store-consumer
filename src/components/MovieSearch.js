@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Movie from './Movie.js'
 import axios from 'axios'
 
 class MovieSearch extends Component {
@@ -7,19 +8,18 @@ class MovieSearch extends Component {
 
     this.state = {
       searchValue: '',
+      results: [],
       error: '',
     }
   }
 
-  
-
   findMovie = (title) => {
-    // const title = this.state.searchValue;
-    console.log('it worked?????!')
     axios.get(`http://localhost:3000/movies`, {params: {query: title}})
     .then((response) => {
-      console.log('it worked!')
-      console.log(response)
+      const responseResults = response.data.map((entry) => {
+        return (entry)
+      })
+      this.setState({results: responseResults})
     })
     .catch((error) => {
       this.setState({ error: error.message });
@@ -42,8 +42,7 @@ class MovieSearch extends Component {
     const newSearch = {
       searchValue: this.state.searchValue,
     }
-    console.log('now???')
-    console.log(newSearch)
+
     this.findMovie(newSearch.searchValue);
 
     this.setState({
@@ -51,11 +50,24 @@ class MovieSearch extends Component {
     });
   }
 
+  searchResults = () => {
+    if (this.state.results.length > 0){
+      const foundResults = this.state.results.map((movie, i) => {
+        return (
+          <Movie 
+            key = {i}
+            title = {movie.title}
+          />
+        )
+      })
+      return foundResults
+    }
+  }
 
   render() {
     return (
       <div>
-        <h1>MovieSearch</h1>
+        <h1>Movie Search</h1>
         <section>
         <form onSubmit={this.onSubmitSearch}>
           <input 
@@ -68,6 +80,9 @@ class MovieSearch extends Component {
             <input type="submit" value="Search" />
           </div>
         </form>
+      </section>
+      <section>
+        {this.searchResults()}
       </section>
       </div>
     );
