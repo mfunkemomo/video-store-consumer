@@ -16,8 +16,9 @@ class MovieSearch extends Component {
   findMovie = (title) => {
     axios.get(`http://localhost:3000/movies`, {params: {query: title}})
     .then((response) => {
-      const responseResults = this.state.results
-      responseResults.push(response.data)
+      const responseResults = response.data.map((entry) => {
+        return (entry)
+      })
       this.setState({results: responseResults})
     })
     .catch((error) => {
@@ -51,6 +52,7 @@ class MovieSearch extends Component {
 
   searchResults = () => {
     console.log(this.state.results.length)
+    console.log(this.state.results)
     if (this.state.results.length > 0){
       const foundResults = this.state.results.map((movie, i) => {
         return (
@@ -67,7 +69,7 @@ class MovieSearch extends Component {
   render() {
     return (
       <div>
-        <h1>MovieSearch</h1>
+        <h1>Movie Search</h1>
         <section>
         <form onSubmit={this.onSubmitSearch}>
           <input 
