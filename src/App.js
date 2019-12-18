@@ -18,6 +18,7 @@ class App extends Component {
 
   selectMovie = (movie) => {
     this.setState({selectedMovie: movie})
+    console.log(this.state.selectedMovie)
   }
 
   render() {
