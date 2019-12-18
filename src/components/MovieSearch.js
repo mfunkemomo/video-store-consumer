@@ -51,8 +51,6 @@ class MovieSearch extends Component {
   }
 
   searchResults = () => {
-    console.log(this.state.results.length)
-    console.log(this.state.results)
     if (this.state.results.length > 0){
       const foundResults = this.state.results.map((movie, i) => {
         return (
