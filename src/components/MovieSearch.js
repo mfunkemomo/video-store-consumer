@@ -50,6 +50,16 @@ class MovieSearch extends Component {
     });
   }
 
+  addMovie = (newMovie) => {
+    axios.post(`http://localhost:3000/movies/${newMovie.title}`)
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((error) => {
+      this.setState({ error: error.message });
+    })
+  }
+
   searchResults = () => {
     if (this.state.results.length > 0){
       const foundResults = this.state.results.map((movie, i) => {
@@ -59,7 +69,11 @@ class MovieSearch extends Component {
               key = {i}
               title = {movie.title}
             />
-            <button>Add movie</button>
+            <button
+              type="button"
+              aria-label="Add movie"
+              onClick={() => {this.addMovie(movie)}}
+            >Add movie to rental library</button>
           </div>
         )
       })
@@ -68,16 +82,6 @@ class MovieSearch extends Component {
   }
 
   render() {
-    // const displayResultsTable = () => {
-    //   <table>
-    //     <tr>
-    //       <th>Movie title</th>
-    //       <th>Add to rental library</th>
-    //     </tr>
-    //       {this.searchResults()}
-    //   </table>
-    // }
-
     return (
       <div>
         <h1>Movie Search</h1>
