@@ -13,11 +13,12 @@ class MovieSearch extends Component {
 
   
 
-  findMovie = () => {
-    const title = this.state.searchValue;
+  findMovie = (title) => {
+    // const title = this.state.searchValue;
+    console.log('it worked?????!')
     axios.get(`http://localhost:3000/movies`, {params: {query: title}})
     .then((response) => {
-      
+      console.log('it worked!')
     })
     .catch((error) => {
       this.setState({ error: error.message });
@@ -40,7 +41,7 @@ class MovieSearch extends Component {
     const newSearch = {
       searchValue: this.state.searchValue,
     }
-
+    // console.log()
     this.props.findMovie(newSearch);
 
     this.setState({
@@ -54,14 +55,17 @@ class MovieSearch extends Component {
       <div>
         <h1>MovieSearch</h1>
         <section>
-        <input 
-          onChange= {this.onInputChange}
-          // onChange={(event) => { searchChangeCallback(event.target.value) }}
-          value={this.state.searchValue}
-          name="searchValue"
-          placeholder="Search movie here"
-        />
-        <button onSubmit={this.onSubmitSearch}>Search</button>
+        <form onSubmit={this.onSubmitSearch}>
+          <input 
+            onChange= {this.onInputChange}
+            value={this.state.searchValue}
+            name="searchValue"
+            placeholder="Search movie here"
+          />
+          <div>
+            <input type="submit" value="Search" />
+          </div>
+        </form>
       </section>
       </div>
     );
