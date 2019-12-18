@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 
 class MovieSearch extends Component {
   constructor(props){
@@ -10,14 +11,13 @@ class MovieSearch extends Component {
     }
   }
 
-  const {title} = this.state;
+  
 
-  componentDidMount(){
-    axios.get(`http://localhost:3000/movies`, {params: {title}})
+  findMovie = () => {
+    const title = this.state.searchValue;
+    axios.get(`http://localhost:3000/movies`, {params: {query: title}})
     .then((response) => {
-      // const movies = response.data.map((entry) => {
-      //   return (entry)
-      // })
+      
     })
     .catch((error) => {
       this.setState({ error: error.message });
@@ -41,11 +41,10 @@ class MovieSearch extends Component {
       searchValue: this.state.searchValue,
     }
 
-    this.props.addCardCallback(newSearch);
+    this.props.findMovie(newSearch);
 
     this.setState({
-      id: '',
-      text: '',
+      searchValue: '',
     });
   }
 
