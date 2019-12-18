@@ -31,10 +31,17 @@ class CustomerList extends Component {
   displayCustomers = () => {
     const ourCustomers = this.state.customers.map((customer, i) => {
       return (
-        <Customer 
-          key = {i}
+        <div key = {i}>
+          <Customer 
           name = {customer.name}
         />
+          <button
+            type="button"
+            label="Select customer"
+            onClick={() => {this.props.selectCustomerCallback(customer)}}
+          >Select customer</button>
+        </div>
+        
       )
     })
     return ourCustomers

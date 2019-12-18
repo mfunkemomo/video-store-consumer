@@ -21,6 +21,11 @@ class App extends Component {
     console.log(this.state.selectedMovie)
   }
 
+  selectCustomer = (customer) => {
+    this.setState({selectedCustomer: customer})
+    console.log(this.state.selectedCustomer)
+  }
+
   render() {
     const Home = () => {
       return (
@@ -43,7 +48,13 @@ class App extends Component {
                 selectMovieCallback={this.selectMovie}
               />}
             />
-            <Route path='/customer' component={CustomerList}/>
+            {/* <Route path='/customer' component={CustomerList}/> */}
+            <Route path='/customer'
+              render={(props) => 
+              <CustomerList {...props}
+                selectCustomerCallback={this.selectCustomer}
+              />}
+            />
           </Switch>
         </div>
       </Router>

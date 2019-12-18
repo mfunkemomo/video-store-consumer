@@ -32,15 +32,15 @@ class MovieLibrary extends Component {
     const filmCollection = this.state.movies.map((movie, i) => {
       return (
         <div key = {i}>
-            <Movie 
-              title = {movie.title}
-            />
-            <button
-              type="button"
-              label="Select movie"
-              onClick={() => {this.props.selectMovieCallback(movie)}}
-            >Select movie</button>
-          </div>
+          <Movie 
+            title = {movie.title}
+          />
+          <button
+            type="button"
+            label="Select movie"
+            onClick={() => {this.props.selectMovieCallback(movie)}}
+          >Select movie</button>
+        </div>
       )
     })
     return filmCollection
