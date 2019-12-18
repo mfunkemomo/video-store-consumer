@@ -51,12 +51,12 @@ class MovieSearch extends Component {
   }
 
   addMovie = (newMovie) => {
-    axios.post(`http://localhost:3000/movies/${newMovie.title}`)
+    axios.post(`http://localhost:3000/movies`, newMovie)
     .then((response) => {
       console.log(response)
     })
     .catch((error) => {
-      this.setState({ error: error.message });
+      this.setState({error: error.message});
     })
   }
 
@@ -64,9 +64,8 @@ class MovieSearch extends Component {
     if (this.state.results.length > 0){
       const foundResults = this.state.results.map((movie, i) => {
         return (
-          <div>
+          <div key = {i}>
             <Movie 
-              key = {i}
               title = {movie.title}
             />
             <button
@@ -93,9 +92,7 @@ class MovieSearch extends Component {
             name="searchValue"
             placeholder="Search movie here"
           />
-          <div>
-            <input type="submit" value="Search" />
-          </div>
+          <input type="submit" value="Search" />
         </form>
       </section>
       <section>
