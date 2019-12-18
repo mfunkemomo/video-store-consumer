@@ -54,23 +54,10 @@ class MovieSearch extends Component {
     if (this.state.results.length > 0){
       const foundResults = this.state.results.map((movie, i) => {
         return (
-          <section>
-            <table>
-              <tr>
-                <th>Movie title</th>
-                <th>Add to movie library</th>
-              </tr>
-              <tr>
-                <td>
-                  <Movie 
-                    key = {i}
-                    title = {movie.title}
-                  />
-                </td>
-                <td><button>Add</button></td>
-              </tr>
-            </table>
-          </section>
+          <Movie 
+            key = {i}
+            title = {movie.title}
+          />
         )
       })
       return foundResults
@@ -94,7 +81,18 @@ class MovieSearch extends Component {
           </div>
         </form>
       </section>
-        {this.searchResults()}
+      <section>
+        <table>
+          <tr>
+            <th>Movie title</th>
+            <th>Add to rental library</th>
+          </tr>
+          <tr>
+            <td>{this.searchResults()}</td>
+            <td><button>Add</button></td>
+          </tr>
+        </table>
+      </section>
       </div>
     );
   }
