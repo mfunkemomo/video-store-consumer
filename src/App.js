@@ -27,12 +27,6 @@ class App extends Component {
     console.log(this.state.selectedCustomer)
   }
 
-  // dueDate = () => {
-  //   let date = new Date();
-  //   date.setDate(date.getDate() + 7);
-  //   console.log(date)
-  // }
-
   checkout = () => {
     if (Object.entries(this.state.selectedCustomer).length > 0 && Object.entries(this.state.selectedMovie).length > 0) {
       const movieTitle = this.state.selectedMovie.title;
@@ -49,7 +43,7 @@ class App extends Component {
 
       axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out`, params)
       .then((response) => {
-        console.log('response.data is:', response.data)
+        console.log(response)
       })
       .catch((error) => {
         this.setState({ error: error.message });
