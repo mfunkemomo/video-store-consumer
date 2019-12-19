@@ -66,7 +66,7 @@ class MovieSearch extends Component {
             />
             <button
               type="button"
-              aria-label="Add movie"
+              label="Add movie"
               onClick={() => {this.addMovie(movie)}}
             >Add movie to rental library</button>
           </div>

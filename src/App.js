@@ -4,13 +4,14 @@ import MovieSearch from './components/MovieSearch.js';
 import MovieLibrary from './components/MovieLibrary.js';
 import CustomerList from './components/CustomerList.js';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import axios from 'axios'
 
 class App extends Component {
   constructor(props){
     super(props)
 
     this.state = {
-      selectedCustomer: '',
+      selectedCustomer: {},
       selectedMovie: {},
       error: '',
     }
@@ -26,11 +27,58 @@ class App extends Component {
     console.log(this.state.selectedCustomer)
   }
 
+  checkout = () => {
+    if (Object.entries(this.state.selectedCustomer).length > 0 && Object.entries(this.state.selectedMovie).length > 0) {
+      const movieTitle = this.state.selectedMovie.title;
+      const customerId = this.state.selectedCustomer.id;
+      let dueDate = new Date();
+
+      dueDate.setDate(dueDate.getDate() + 7);
+      console.log(dueDate)
+
+      const params = {
+        customer_id: customerId,
+        due_date: dueDate.toString()
+      }
+
+      axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out`, params)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      }) 
+    }
+  }
+
+  displayRental = () => {
+    if (Object.entries(this.state.selectedCustomer).length > 0 && Object.entries(this.state.selectedMovie).length > 0){
+      return (
+        <div>
+          <p>Selected Customer: {this.state.selectedCustomer.name}</p>
+          <p>Selected Movie: {this.state.selectedMovie.title}</p>
+          <button
+              type="button"
+              label="checkout"
+              onClick={() => {this.checkout()}}
+            >Checkout this rental</button>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <p>Customer and/or movie has not been selected.</p>
+        </div>
+      )
+    }
+  }
+
   render() {
     const Home = () => {
       return (
       <div>
         <h1>Homepage</h1>
+        {this.displayRental()}
       </div>
       )
     }
@@ -48,7 +96,6 @@ class App extends Component {
                 selectMovieCallback={this.selectMovie}
               />}
             />
-            {/* <Route path='/customer' component={CustomerList}/> */}
             <Route path='/customer'
               render={(props) => 
               <CustomerList {...props}
