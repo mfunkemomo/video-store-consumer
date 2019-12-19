@@ -27,10 +27,27 @@ class App extends Component {
     console.log(this.state.selectedCustomer)
   }
 
+  // dueDate = () => {
+  //   let date = new Date();
+  //   date.setDate(date.getDate() + 7);
+  //   console.log(date)
+  // }
+
   checkout = () => {
     if (Object.entries(this.state.selectedCustomer).length > 0 && Object.entries(this.state.selectedMovie).length > 0) {
-      const title = this.state.selectedMovie.title
-      axios.post(`http://localhost:3000/rentals/${title}/check-out`)
+      const movieTitle = this.state.selectedMovie.title;
+      const customerId = this.state.selectedCustomer.id;
+      let dueDate = new Date();
+
+      dueDate.setDate(dueDate.getDate() + 7);
+      console.log(dueDate)
+
+      const params = {
+        customer_id: customerId,
+        due_date: dueDate.toString()
+      }
+
+      axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out`, params)
       .then((response) => {
         console.log('response.data is:', response.data)
       })
@@ -46,6 +63,11 @@ class App extends Component {
         <div>
           <p>Selected Customer: {this.state.selectedCustomer.name}</p>
           <p>Selected Movie: {this.state.selectedMovie.title}</p>
+          <button
+              type="button"
+              label="checkout"
+              onClick={() => {this.checkout()}}
+            >Checkout this rental</button>
         </div>
       )
     } else {
