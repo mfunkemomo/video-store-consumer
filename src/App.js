@@ -4,13 +4,14 @@ import MovieSearch from './components/MovieSearch.js';
 import MovieLibrary from './components/MovieLibrary.js';
 import CustomerList from './components/CustomerList.js';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import axios from 'axios'
 
 class App extends Component {
   constructor(props){
     super(props)
 
     this.state = {
-      selectedCustomer: '',
+      selectedCustomer: {},
       selectedMovie: {},
       error: '',
     }
@@ -26,11 +27,41 @@ class App extends Component {
     console.log(this.state.selectedCustomer)
   }
 
+  checkout = () => {
+    if (Object.entries(this.state.selectedCustomer).length > 0 && Object.entries(this.state.selectedMovie).length > 0) {
+      const title = this.state.selectedMovie.title
+      axios.post(`http://localhost:3000/rentals/${title}/check-out`)
+      .then((response) => {
+        console.log('response.data is:', response.data)
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      }) 
+    }
+  }
+
+  displayCustomer = () => {
+    if (Object.entries(this.state.selectedCustomer) > 0){
+      return (
+        <div>
+          <p>Selected Customer: {this.state.selectedCustomer.name}</p>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <p>Customer has not been selected.</p>
+        </div>
+      )
+    }
+  }
+
   render() {
     const Home = () => {
       return (
       <div>
         <h1>Homepage</h1>
+        {this.displayCustomer()}
       </div>
       )
     }
@@ -48,7 +79,6 @@ class App extends Component {
                 selectMovieCallback={this.selectMovie}
               />}
             />
-            {/* <Route path='/customer' component={CustomerList}/> */}
             <Route path='/customer'
               render={(props) => 
               <CustomerList {...props}
