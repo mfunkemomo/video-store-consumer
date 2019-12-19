@@ -40,17 +40,18 @@ class App extends Component {
     }
   }
 
-  displayCustomer = () => {
-    if (Object.entries(this.state.selectedCustomer) > 0){
+  displayRental = () => {
+    if (Object.entries(this.state.selectedCustomer).length > 0 && Object.entries(this.state.selectedMovie).length > 0){
       return (
         <div>
           <p>Selected Customer: {this.state.selectedCustomer.name}</p>
+          <p>Selected Movie: {this.state.selectedMovie.title}</p>
         </div>
       )
     } else {
       return (
         <div>
-          <p>Customer has not been selected.</p>
+          <p>Customer and/or movie has not been selected.</p>
         </div>
       )
     }
@@ -61,7 +62,7 @@ class App extends Component {
       return (
       <div>
         <h1>Homepage</h1>
-        {this.displayCustomer()}
+        {this.displayRental()}
       </div>
       )
     }
