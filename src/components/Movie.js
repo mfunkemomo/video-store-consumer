@@ -5,7 +5,8 @@ class Movie extends Component {
     return (
       <div>
         <ul>
-          <li>{this.props.title}</li>
+          <li><strong>{this.props.title}</strong></li>
+          <li>{this.props.overview}</li>
         </ul>
       </div>
     )

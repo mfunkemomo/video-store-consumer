@@ -43,8 +43,11 @@
 }
 
 .nav-bar ul li {
-  text-decoration: none;
   margin-top: 4rem;
+}
+
+.nav-bar a {
+  text-decoration: none;
 }
 
 .no-rental {
@@ -60,6 +63,10 @@
   list-style: none;
 }
 
+.movie-customer-display ul>li {
+  margin: 1rem 0;
+}
+
 .search-form {
   margin-top: 3rem;
 }
@@ -67,7 +74,8 @@
 .selectMovie  {
   display: flex;
   flex-direction: row;
-  margin: 1em;
+  margin: 1em 7em;
+
 }
 
 .selectMovie >section  {
@@ -76,10 +84,16 @@
   margin: 1em;
 }
 
+.movieBlurb >li {
+  margin: 4em 0;
+  background-color: red;
+}
+
 .selectCustomer  {
   display: flex;
   flex-direction: row;
   margin: 1em;
+  justify-content: center;
 }
 
 .selectCustomer >section  {

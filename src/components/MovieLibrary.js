@@ -32,17 +32,20 @@ class MovieLibrary extends Component {
       return (
         <div className="movie-customer-display selectMovie" key = {i}>
           <section>
-          <Movie 
-            title = {movie.title}
-            overview = {movie.overview}
-          />
+              <img src={movie.image_url} alt="movieCover"/>
+          </section>
+          <section className ="movieBlurb">
+            <Movie 
+              title = {movie.title}
+              overview = {movie.overview}
+            />
           </section>
           <section>
-          <button 
-            type="button"
-            label="Select movie"
-            onClick={() => {this.props.selectMovieCallback(movie)}}
-          >Select movie</button>
+            <button 
+              type="button"
+              label="Select movie"
+              onClick={() => {this.props.selectMovieCallback(movie)}}
+            >Select movie</button>
           </section>
         </div>
       )

@@ -8,7 +8,7 @@ class Customer extends Component {
     return (
       <div>
         <ul>
-          <li>{this.props.name}</li>
+          <li><strong>{this.props.name}</strong></li>
         </ul>
       </div>
     )
