@@ -31,10 +31,14 @@ class CustomerList extends Component {
     const ourCustomers = this.state.customers.map((customer, i) => {
       return (
         <div className="movie-customer-display selectCustomer" key = {i}>
-          <section>
+        <section>
           <Customer 
           name = {customer.name}
-        />
+          checkoutCount = {customer.movies_checked_out_count}
+          />
+        </section>
+        <section>
+          <p>Customer checkout count is: {customer.movies_checked_out_count}</p>
         </section>
         <section>
           <button
