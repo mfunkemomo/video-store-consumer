@@ -9,9 +9,10 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 40px;
   padding: 20px;
   color: white;
+  margin: 0;
 }
 
 .App-title {
@@ -25,4 +26,40 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.nav-bar {
+  background-color: rgb(155, 207, 241);
+  height: 6rem;
+}
+
+.nav-bar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: space-evenly;
+  margin: 0;
+}
+
+.nav-bar ul li {
+  text-decoration: none;
+  margin-top: 4rem;
+}
+
+.no-rental {
+  color: red;
+}
+
+.movieCard {
+  border: black 1px solid;
+  list-style: none;
+}
+
+.movie-customer-display ul {
+  list-style: none;
+}
+
+.search-form {
+  margin-top: 3rem;
 }

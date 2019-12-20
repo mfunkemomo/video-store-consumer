@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Customer from './Customer'
-import {Route, Link} from 'react-router-dom'
 import axios from 'axios';
 
 class CustomerList extends Component {
@@ -31,7 +30,7 @@ class CustomerList extends Component {
   displayCustomers = () => {
     const ourCustomers = this.state.customers.map((customer, i) => {
       return (
-        <div key = {i}>
+        <div className="movie-customer-display" key = {i}>
           <Customer 
           name = {customer.name}
         />
@@ -50,7 +49,7 @@ class CustomerList extends Component {
   render() {
     return (
       <div className="App">
-        <h1>CustomerList</h1>
+        <h1 className="App-header">CustomerList</h1>
         {this.displayCustomers()}
       </div>
     );

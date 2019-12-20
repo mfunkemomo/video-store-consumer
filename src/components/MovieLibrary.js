@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Movie from './Movie.js'
-import {Route, Link} from 'react-router-dom'
 import axios from 'axios'
 
 class MovieLibrary extends Component {
@@ -31,9 +30,10 @@ class MovieLibrary extends Component {
   displayMovies = () => {
     const filmCollection = this.state.movies.map((movie, i) => {
       return (
-        <div key = {i}>
+        <div className="movie-customer-display" key = {i}>
           <Movie 
             title = {movie.title}
+            overview = {movie.overview}
           />
           <button
             type="button"
@@ -49,7 +49,7 @@ class MovieLibrary extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Movie Library</h1>
+        <h1 className="App-header">Movie Library</h1>
         {this.displayMovies()}
       </div>
     );
