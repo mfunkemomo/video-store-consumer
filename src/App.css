@@ -43,8 +43,11 @@
 }
 
 .nav-bar ul li {
-  text-decoration: none;
   margin-top: 4rem;
+}
+
+.nav-bar a {
+  text-decoration: none;
 }
 
 .no-rental {

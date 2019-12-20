@@ -60,15 +60,23 @@ class MovieSearch extends Component {
     if (this.state.results.length > 0){
       const foundResults = this.state.results.map((movie, i) => {
         return (
-          <div key = {i}>
-            <Movie 
-              title = {movie.title}
-            />
-            <button
-              type="button"
-              label="Add movie"
-              onClick={() => {this.addMovie(movie)}}
-            >Add movie to rental library</button>
+          <div className="movie-customer-display selectMovie" key = {i}>
+            <section>
+              <img src={movie.image_url} alt="movieCover"/>
+            </section>
+            <section>
+              <Movie 
+                title = {movie.title}
+                overview = {movie.overview}
+              />
+            </section>
+            <section>
+              <button
+                type="button"
+                label="Add movie"
+                onClick={() => {this.addMovie(movie)}}
+              >Add movie to rental library</button>
+            </section>
           </div>
         )
       })
