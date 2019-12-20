@@ -30,15 +30,19 @@ class CustomerList extends Component {
   displayCustomers = () => {
     const ourCustomers = this.state.customers.map((customer, i) => {
       return (
-        <div className="movie-customer-display" key = {i}>
+        <div className="movie-customer-display selectCustomer" key = {i}>
+          <section>
           <Customer 
           name = {customer.name}
         />
+        </section>
+        <section>
           <button
             type="button"
             label="Select customer"
             onClick={() => {this.props.selectCustomerCallback(customer)}}
           >Select customer</button>
+          </section>
         </div>
         
       )
