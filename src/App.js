@@ -3,8 +3,9 @@ import Nav from './Nav.js'
 import MovieSearch from './components/MovieSearch.js';
 import MovieLibrary from './components/MovieLibrary.js';
 import CustomerList from './components/CustomerList.js';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import axios from 'axios'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import axios from 'axios';
+import './App.css';
 
 class App extends Component {
   constructor(props){
@@ -55,8 +56,8 @@ class App extends Component {
     if (Object.entries(this.state.selectedCustomer).length > 0 && Object.entries(this.state.selectedMovie).length > 0){
       return (
         <div>
-          <p>Selected Customer: {this.state.selectedCustomer.name}</p>
-          <p>Selected Movie: {this.state.selectedMovie.title}</p>
+          <p>Selected customer: {this.state.selectedCustomer.name}</p>
+          <p>Selected movie: {this.state.selectedMovie.title}</p>
           <button
               type="button"
               label="checkout"
@@ -66,8 +67,9 @@ class App extends Component {
       )
     } else {
       return (
-        <div>
-          <p>Customer and/or movie has not been selected.</p>
+        <div className="no-rental">
+          <p>Cannot create rental until a customer and movie has been selected.</p>
+          <p>Select a customer and movie.</p>
         </div>
       )
     }
@@ -76,9 +78,9 @@ class App extends Component {
   render() {
     const Home = () => {
       return (
-      <div>
-        <h1>Homepage</h1>
-        {this.displayRental()}
+      <div className="App">
+        <h1 className="App-header">Homepage</h1>
+        <p className="App-intro">{this.displayRental()}</p>
       </div>
       )
     }

@@ -79,8 +79,8 @@ class MovieSearch extends Component {
   render() {
     return (
       <div>
-        <h1>Movie Search</h1>
-        <section>
+        <h1 className="App-header">Movie Search</h1>
+        <section className="search-form">
         <form onSubmit={this.onSubmitSearch}>
           <input 
             onChange= {this.onInputChange}
